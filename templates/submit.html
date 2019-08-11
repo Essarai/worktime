@@ -1,0 +1,56 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>易班工作量管理平台</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/index.css' %}">
+</head>
+
+<body>
+	<div class="indexHeader">
+		<img src="{% static '/images/index/yiban.jpg'%}" alt="" width="" height="" class="yiban">
+		<img src="{% static '/images/index/title1.jpg'%}" alt="" width="513" height="99" class="title">
+	</div>
+	<div class="indexMain">
+		<div class="indexContent">
+			<form action="" method="POST">
+				{% csrf_token %}
+				<h3>第<select name = "which_week">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+					</select>周工作量提交</h3>
+
+				<label class="labelTime">
+					<i>工作总时长：</i><input type="text" class="workTime" name="work_times">
+				</label>
+				<label class="labelLoad">
+					<i>工作量详情：</i>
+					<textarea rows="5" cols="18" name="work_details"></textarea >
+				</label>
+				<input type="submit" value="提交" class="toSubmit">
+			</form>
+			{{errmsg}}
+		</div>
+		<div class="indexFooter">安徽师范大学易班工作中心</div>
+	</div>
+
+</body>
+
+</html>

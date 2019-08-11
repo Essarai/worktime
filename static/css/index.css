@@ -1,0 +1,113 @@
+*{
+	margin:0;
+	padding: 0;
+	outline: none;
+}
+body{
+	font-family:"Microsoft YaHei";
+	font-size: 22px;
+	color: #333;
+	-webkit-text-size-adjust:100%;
+}
+.indexHeader{
+	width: 100%;
+	height:120px;
+	background: rgb(255,254,250);
+}
+.yiban{
+	padding-left: 40px;
+}
+.title{
+	margin-top: 0;
+}
+.indexMain{
+	width:100%;
+	height:520px;
+	background: url("../images/index/bg11.png");
+}
+.indexContent{
+	width:100%;
+	height: 500px;
+}
+.indexContent form{
+	position: absolute;
+	width:530px;
+	height:380px;
+	border: 2px solid rgb(27,160,225);
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -270px;	
+}
+select{
+	vertical-align: middle;
+	height: 25px;
+	margin-right: 5px;
+	border:1px solid #a6a6a6;/*框框的颜色*/
+    border-radius: 3px;
+}
+.indexContent form h3{
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align: center;
+	font-size: 22px;
+	letter-spacing: 5px;
+    font-family: "Microsoft Yahei";   
+    font-weight:normal;
+}
+.labelTime{
+	display: block;
+}
+.labelLoad{
+	display: block;
+}
+.toSubmit{
+	width:280px;
+    height:40px;
+    line-height: 40px;
+    border-radius:3px; 
+    -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+    background: #ed5b5a;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    margin-left: 130px;
+    margin-top: 25px;
+    border:none;
+}
+i{
+	font-style: normal;
+	font-size: 22px;
+}
+label{
+	padding-left: 60px;
+}
+.workTime{
+	width: 260px;
+	height:30px;
+	border:1px solid #a6a6a6;/*框框的颜色*/
+	border-radius: 5px;
+}
+.labelLoad{
+	padding-top: 20px;
+}
+textarea{
+	width:260px;
+	height:150px;
+	vertical-align: top;
+	border:1px solid #a6a6a6;/*框框的颜色*/
+	border-radius: 5px;
+	margin-left: -8px;
+	font-size: 14px;
+	color:#333;
+	font-family: "Microsoft Yahei";
+}
+.indexFooter{
+	width:100%;
+	height: 20px;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: center;
+}

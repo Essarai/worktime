@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>易班工作量登录页面</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/admin.css' %}">
+	<script type="text/javascript" src="{% static '/js/query-3.4.1.min.js' %}"></script>
+</head>
+
+<body>
+	<div class="header">
+		<img src="{% static '/images/logo22.jpg'%}" width="463" height="69" alt="">
+		<div class="time" id="sp_time"></div>
+	</div>
+	<div class="content">
+		<!--css里设置背景为图片还是在这里插入图片-->
+		<form action="" method="POST">
+			{% csrf_token%}
+			<h3>易班工作量管理平台</h3>
+			<input type="text" value="请输入用户名" class="textAdmin add bgOne" required name="student_id">
+			<input type="password" value="请输入密码" class="textAdmin add bgTwo" required name="password">
+			<label>
+				<input type="checkbox" checked="checked">
+				<i>记住密码</i>
+			</label>
+			<input type="submit" value="登录" class="loadIn">
+			<span class="adminMore">
+				<a href="#" class="moreOne">QQ登录</a>
+				<a href="#" class="moreTwo">微信登录</a>
+			</span>
+			<a href="/regist/" class="loginAdmin">立即注册</a>
+			<h3>{{errmsg}}</h3>
+		</form>
+
+	</div>
+	<div class="footer">Copyright 2019-2021 工作量管理系统 - Powered By 安徽师范大学易班技术开发部 V1.0</div>
+	<!--时间插件-->
+	<script type="text/javascript">
+		setInterval(function () {
+			var dd = new Date();/*创建一个日期对象，获得他的年、月日时分秒属性*/
+			var y = dd.getFullYear();
+			var m = dd.getMonth() + 1;
+			var d = dd.getDate();
+			var h = dd.getHours();
+			var mi = dd.getMinutes();
+			var s = dd.getSeconds();
+			var str = y + "/" + m + "/" + d + "&nbsp;" + h + ":" + mi + ":" + s + "&nbsp;" + "星期" + "日一二三四五六".charAt(dd.getDay());
+			document.getElementById("sp_time").innerHTML = str;
+		})
+	</script>
+</body>
+
+</html>

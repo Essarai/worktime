@@ -1,0 +1,144 @@
+*{
+    padding: 0;
+    margin:0;
+}
+body{
+    font-family:"宋体","Microsoft YaHei";
+}
+.header{
+    width:100%;
+    height:120px;
+}
+.header img{
+    padding-left: 200px;
+    padding-top: 30px;
+}
+.time{
+    float:right;
+    width:220px;
+    height:30px;
+    line-height: 30px;
+    margin-right: 200px;
+    margin-top:40px;
+    font-size: 16px;
+    font-family: "Microsoft Yahei";
+    background: url("../images/time-admin.jpg")5px center no-repeat;
+    padding-left: 40px;
+    border-radius: 5px;
+    background-color: rgba(89,155,213);
+    color:#fff;
+}
+.content{
+    width:100%;
+    height:600px;
+    background-image: url(../images/admin-bg.jpg);
+}
+.content form{
+    width:390px;
+    height:400px;
+    float: right;
+    margin-top: 100px;
+    margin-right: 140px;
+    background-color: #fff;
+    border-radius: 5px;    
+}
+h3{
+    font-size: 22px;
+    font-family: "Microsoft Yahei";
+    padding-top: 30px;
+    text-align: center;
+    font-weight:normal;
+    margin-bottom: 10px;
+}
+/*设置垂直*/
+.add{
+    width: 245px;
+	height: 25px;
+    line-height: 33px;
+}
+.textAdmin{
+    border:1px solid #a6a6a6;/*框框的颜色*/
+    border-radius: 3px;
+    color:#c9c9c9;/*是里面元素的颜色，字体变灰了*/
+    padding-left: 8%;
+    margin-left: 60px;
+    margin-top: 20px;
+}
+.bgOne{
+    background: url(../images/admin1.jpg) 8px center no-repeat;
+}
+.bgTwo{
+    background: url(../images/password11.jpg) 8px center no-repeat;
+}
+i{
+    font-style: normal;
+    font-size: 14px;
+	color: #5b5b5b;
+}
+label{
+    display:block;
+    margin-left: 60px;
+    margin-top: 30px;    
+}
+.loadIn{
+    width:280px;
+    height:40px;
+    line-height: 40px;
+    border-radius:3px; 
+    -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+    background: #ed5b5a;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    margin-left: 60px;
+    margin-top: 40px;
+    border:none;
+}
+a{
+    text-decoration: none;
+}
+.adminMore{
+    display: block;  
+    margin-left: 60px;
+    margin-top: 20px; 
+}
+.adminMore a{
+    display:inline-block;
+    font-size: 14px;
+    height:25px;
+    line-height: 25px;
+    color:#6c6c6c;
+    padding-left:25px; 
+}
+.moreOne{
+    background:url(../images/qq.jpg)left center no-repeat;
+}
+.moreTwo{
+    background:url(../images/weixin.jpg)left center no-repeat;
+}
+.loginAdmin{
+    display:block;
+    width:100%;
+    height:43px;
+    line-height: 43px;
+    text-align: center;
+    color:#fff;
+    background: #5b5b5b;
+    margin-top:28px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+}
+.loginAdmin:hover{
+	color: #fff;
+}	
+.footer{
+    width:100%;
+    height:80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 14px;
+    color:#3f3f3f;
+}

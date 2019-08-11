@@ -1,0 +1,74 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>注册页面</title>#}
+{##}
+{#</head>#}
+{#<body>#}
+{#<div style="margin: 15% 40%;">#}
+{#    <form action="" method="POST">#}
+{#        {% csrf_token %}#}
+{#        注册学号:<input type="text" name="student_id">#}
+{#        <br>#}
+{#        注册密码:<input type="password" name="password">#}
+{#        <br>#}
+{#        确认密码:<input type="password" name="password2">#}
+{#        <br>#}
+{#        <input type="submit" value="提交"><a href="/login/">登陆</a>#}
+{#    </form>#}
+{#    {{errmsg}}#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>用户注册页面</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/admin.css' %}">
+	<script type="text/javascript" src="{% static '/js/query-3.4.1.min.js' %}"></script>
+</head>
+
+<body>
+	<div class="header">
+		<img src="{% static '/images/logo22.jpg'%}" width="463" height="69" alt="">
+		<div class="time" id="sp_time"></div>
+	</div>
+	<div class="content">
+		<!--css里设置背景为图片还是在这里插入图片-->
+		<form action="" method="POST">
+			{% csrf_token%}
+			<h3>易班工作量管理平台</h3>
+            注册学号:<input type="text" value="" class="textAdmin add bgOne" required name="student_id"  style=" margin-left: 17px;padding-left: 3%;">
+            <br>
+            注册密码:<input type="password" value="" class="textAdmin add bgTwo" required name="password"  style=" margin-left: 17px;padding-left: 3%;">
+            <br>
+            确认密码:<input type="password" value="" class="textAdmin add bgTwo" required name="password2"  style=" margin-left: 17px;padding-left: 3%;">
+            <br>
+			<input type="submit" value="提交" class="loadIn">
+
+			<a href="/login/" class="loginAdmin">立即登陆</a>
+			<h3>{{errmsg}}</h3>
+		</form>
+
+	</div>
+	<div class="footer">Copyright 2019-2021 工作量管理系统 - Powered By 安徽师范大学易班技术开发部 V1.0</div>
+	<!--时间插件-->
+	<script type="text/javascript">
+		setInterval(function () {
+			var dd = new Date();/*创建一个日期对象，获得他的年、月日时分秒属性*/
+			var y = dd.getFullYear();
+			var m = dd.getMonth() + 1;
+			var d = dd.getDate();
+			var h = dd.getHours();
+			var mi = dd.getMinutes();
+			var s = dd.getSeconds();
+			var str = y + "/" + m + "/" + d + "&nbsp;" + h + ":" + mi + ":" + s + "&nbsp;" + "星期" + "日一二三四五六".charAt(dd.getDay());
+			document.getElementById("sp_time").innerHTML = str;
+		})
+	</script>
+</body>
+
+</html>

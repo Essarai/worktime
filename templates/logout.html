@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>退出登陆</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/logout.css' %}">
+</head>
+<body>
+<table align="center" id = "table-7">
+    <h1 align="center">欢迎{{name.Student_name}}！</h1>
+    <thead>
+             <th>第几周</th>
+             <th>工作时长</th>
+             <th>工作详情</th>
+    </thead>
+
+    <tbody>
+    {% for all_work in all_works %}
+    <tr>
+        <td>{{ all_work.which_week }}</td>
+        <td>{{ all_work.work_times}}</td>
+        <td>{{all_work.work_details}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

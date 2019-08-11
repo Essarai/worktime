@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+     <div style="margin: 15% 40%;">
+        <h2>欢迎!请进行信息绑定</h2>
+         <form action="" method="POST">
+             {% csrf_token %}
+             姓名:<input type="text" name="student_name">
+             <br>
+             部门<select name="student_department">
+                     <option value="0">技术开发部</option>
+                     <option value="1">秘书部</option>
+                     <option value="2">编辑部</option>
+                     <option value="3">管理部</option>
+                 </select>
+             <br>
+            职位<select name="student_position">
+                   <option value="0">总队</option>
+                   <option value="1">副总队</option>
+                   <option value="2">部长</option>
+                   <option value="3">副部长</option>
+                   <option value="3">队员</option>
+                </select>
+             <br>
+            <input type="submit" value="提交">
+             <br>
+       </form>
+
+    </div>
+
+</body>
+</html>

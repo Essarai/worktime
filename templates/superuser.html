@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/logout.css' %}">
+</head>
+<body>
+<div >
+        <h1>请进行信息查询!</h1>
+        <h2>{{errmsg}}</h2>
+         <form action="" method="POST">
+             {% csrf_token %}
+             第几周:<input type="text" name="which_week">
+             <br>
+             请选择部门:<select name="student_department">
+                     <option value="0">技术开发部</option>
+                     <option value="1">秘书部</option>
+                     <option value="2">编辑部</option>
+                     <option value="3">管理部</option>
+                       </select>
+             <br>
+            <input type="submit" value="查询">
+              <a href="{% url 'worktime:export_excel' %}"><button  type="button">导出全部</button></a>
+       </form>
+    <table style="float: left" id = "table-7">
+            <thead>
+                 <th>第几周</th>
+                 <th>工作时长</th>
+                 <th>工作详情</th>
+            </thead>
+
+            <tbody>
+            {% for department_work in department_works %}
+            <tr>
+                <td>{{ department_work.which_week }}</td>
+                <td>{{ department_work.work_times}}</td>
+                <td>{{department_work.work_details}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+
+    <table style="float: left" id = "table-7">
+        <thead>
+             <th>学号</th>
+             <th>姓名</th>
+        </thead>
+
+        <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.Student_id }}</td>
+            <td>{{ student.Student_name }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
