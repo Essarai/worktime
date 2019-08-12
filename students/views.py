@@ -85,7 +85,7 @@ def index(request,student_id):
             student_name = request.POST.get('student_name')
             student_department= request.POST.get('student_department')
             student_position= request.POST.get('student_position')
-            Student.objects.create(Student_id = student_id, Student_name = student_name, Student_department = student_department, Student_position = student_position)
+            Student.objects.create(Student_id=student_id, Student_name=student_name, Student_department=student_department, Student_position=student_position)
         '''已绑定'''
     return redirect(reverse('worktime:submit',args=(student_id,)))
 
