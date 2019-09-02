@@ -16,13 +16,13 @@
 	<div class="content">
 		<!--css里设置背景为图片还是在这里插入图片-->
 		<form action="" method="POST">
-			{% csrf_token%}
+			{% csrf_token %}
 			<h3>易班工作量管理平台</h3>
-			<input type="text" value="请输入用户名" class="textAdmin add bgOne" required name="student_id">
-			<input type="password" value="请输入密码" class="textAdmin add bgTwo" required name="password">
+			<input type="text" value="{{ student_id }}" class="textAdmin add bgOne" required name="student_id" >
+			<input type="password" value="{{ password }}" class="textAdmin add bgTwo" required name="password">
 			<label>
-				<input type="checkbox" checked="checked">
-				<i>记住密码</i>
+				<input type="checkbox" name="remember" {{checked }}>
+				<i>记住用户名和密码</i>
 			</label>
 			<input type="submit" value="登录" class="loadIn">
 			<span class="adminMore">

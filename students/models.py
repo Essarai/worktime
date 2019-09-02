@@ -24,7 +24,7 @@ class Student(models.Model):
     )
 
     Student_id  = models.CharField(primary_key=True, max_length=11, verbose_name='学号')
-    Student_name =models.CharField(max_length=20,verbose_name='姓名')
+    Student_name =models.CharField(max_length=32,verbose_name='姓名')
     Student_department = models.SmallIntegerField(default=0,choices=status_choices1,verbose_name='部门')
     Student_position = models.SmallIntegerField(default=0,choices=status_choices2,verbose_name='职位')
 

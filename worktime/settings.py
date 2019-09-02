@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'zr&zl+=9h^v^y5*&$l&wbzy-0(n+mi-epe@=1#1$c=8=^r(7)h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','asdyiban.cn']
 
@@ -81,11 +81,7 @@ DATABASES = {
         'NAME': 'test',
         'USER':'root',
         'PASSWORD':'password',
-        #本地
         #'HOST':'127.0.0.1',
-        #搬瓦工
-        #'HOST':'107.182.180.27',
-        #腾讯云
         'HOST':'111.231.101.168',
         'PORT':3306
     }
@@ -140,17 +136,17 @@ TINYMCE_DEFAULT_CONFIG = {
     'height':400
 }
 
-# #django缓存
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django_redis.cache.RedisCache",
-#         "LOCATION": "redis://127.0.0.1:6379/1",
-#         "OPTIONS": {
-#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-#         }
-#     }
-# }
-# #配置session存储
-# SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-# SESSION_CACHE_ALIAS = "default"
-#
+#django缓存
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://111.231.101.168:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+#配置session存储
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+

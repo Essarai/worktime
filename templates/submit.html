@@ -15,6 +15,7 @@
 	</div>
 	<div class="indexMain">
 		<div class="indexContent">
+            <div align="center">{{errmsg}}</div>
 			<form action="" method="POST">
 				{% csrf_token %}
 				<h3>第<select name = "which_week">
@@ -46,7 +47,6 @@
 				</label>
 				<input type="submit" value="提交" class="toSubmit">
 			</form>
-			{{errmsg}}
 		</div>
 		<div class="indexFooter">安徽师范大学易班工作中心</div>
 	</div>

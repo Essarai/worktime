@@ -47,11 +47,21 @@ def regist(request):
 def login(request):
     '''显示提交页面'''
     if request.method == 'GET':
-        return render(request, 'login.html')
+        #判断是否记住用户名
+        if 'student_id' in request.COOKIES:
+            student_id = request.COOKIES.get('student_id')
+            password = request.COOKIES.get('password')
+            checked = 'checked'
+        else:
+            student_id = ''
+            checked = ''
+            password =''
+        return render(request, 'login.html',{'student_id':student_id,'password':password,'checked':checked})
     '''进行提交处理'''
     if request.method == 'POST':
         student_id = request.POST.get('student_id')
         password = request.POST.get('password')
+        remember = request.POST.get('remember')
         # 验证用户名和密码，通过的话，返回User对象
         try:
             user2 = User.objects.get(username = student_id)
@@ -66,7 +76,15 @@ def login(request):
                 user = auth.authenticate(username=student_id, password=password)
                 if user:
                     auth.login(request, user)
-                    return redirect(reverse('worktime:index', args=(student_id,)))
+                    response = redirect(reverse('worktime:index', args=(student_id,)))
+                    if remember == 'on':
+                        # 记住用户名
+                        response.set_cookie('student_id',student_id,max_age=7*24*3600)
+                        response.set_cookie('password',password,max_age=7*24*3600)
+                    else:
+                        response.delete_cookie('student_id')
+                        response.delete_cookie('password')
+                    return response
                 else:
                     return render(request, 'login.html', {'errmsg': '密码错误'})
 
@@ -85,8 +103,12 @@ def index(request,student_id):
             student_name = request.POST.get('student_name')
             student_department= request.POST.get('student_department')
             student_position= request.POST.get('student_position')
-            Student.objects.create(Student_id=student_id, Student_name=student_name, Student_department=student_department, Student_position=student_position)
-        '''已绑定'''
+            if not all([student_name,student_department,student_position]):
+                return render(request,'index.html',{'errmsg':'数据不完整，请重新输入'})
+            else:
+                '''已绑定'''
+                Student.objects.create(Student_id=student_id, Student_name=student_name, Student_department=student_department, Student_position=student_position)
+
     return redirect(reverse('worktime:submit',args=(student_id,)))
 
 
@@ -170,7 +192,10 @@ def export_excel(request):
     from django.db import connection
     cursor = connection.cursor()
     cursor.execute(
-        'select student_department 部门,student_id 学号,student_name 姓名,which_week 第几周,work_times 工作时长,work_details 工作详情 from student_test,worktime_test where student_id = work_id ORDER BY  student_department, which_week')
+        'select student_department 部门,student_id 学号,student_name 姓名,which_week 第几周,work_times 工作时长,work_details 工作详情 '
+        'from student_test,worktime_test '
+        'where student_id = work_id '
+        'ORDER BY  student_department, which_week')
     row = cursor.fetchall()
     data_row = 1
     for i in row:
