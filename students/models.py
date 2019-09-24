@@ -39,7 +39,7 @@ class Work(models.Model):
     which_week = models.SmallIntegerField(default=1,verbose_name='第几周')
     work_times = models.FloatField(default=0.0, verbose_name='工作时长')
     work_details = HTMLField(verbose_name='工作详情')
-    work_is_activate = models.BooleanField(default=False,verbose_name='是否审核通过')
+    work_is_activate = models.SmallIntegerField(default=0,verbose_name='是否审核通过')
 
     class Meta:
         db_table = 'worktime_test'

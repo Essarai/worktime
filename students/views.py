@@ -125,17 +125,25 @@ def submit(request, student_id):
         try:
             wk = Work.objects.get(work_id=student_id, which_week=which_week).work_is_activate
         except:
-            wk = False
-        if wk == True:
-            return render(request, 'submit.html', {'errmsg': '该周工作量已审核通过且无法修改'})
-        else:
+            wk = 0
+        if wk == 1:
+            #提交已通过审核
+            return render(request, 'submit.html', {'errmsg': '该周工作量已通过审核,无法修改'})
+        elif wk == 0:
+            #还未通过审核或未提交
             try:
-                Work.objects.get(work_id=student_id, which_week=which_week)
+                Work.objects.get(work_id=student_id, which_week=which_week).work_is_activate
                 return render(request, 'submit.html', {'errmsg': '该周工作量已提交且正在审核'})
             except:
+                #未提交
                 Work.objects.update_or_create(work_id=student_id, which_week=which_week, work_times=work_times,
-                                              work_details=work_details, work_is_activate=False)
+                                              work_details=work_details, work_is_activate=0)
                 return redirect(reverse('worktime:logout', args=(student_id,)))
+        else:
+            Work.objects.get(work_id=student_id, which_week=which_week).delete()
+            return render(request, 'submit.html', {'errmsg': '该周工作量未通过审核，请重新提交'})
+
+
 
 
 #/worktime/logout/
@@ -246,6 +254,14 @@ def export_excel(request):
 def check(request):
     pk = request.GET.get('id')
     wk = Work.objects.get(pk= pk)
-    wk.work_is_activate = True
+    wk.work_is_activate = 1
+    wk.save()
+    return redirect('/superuser')
+
+#superuser/refuse/
+def refuse(request):
+    pk = request.GET.get('id')
+    wk = Work.objects.get(pk= pk)
+    wk.work_is_activate = -1
     wk.save()
     return redirect('/superuser')

@@ -39,12 +39,17 @@
                 <td>{{ department_work.work_times}}</td>
                 <td>{{ department_work.work_details}}</td>
                 <td>
-                     {% if department_work.work_is_activate == False %}
-                            <a href="/superuser/check/?id={{department_work.id}}"><button  type="button" value="id"  name="id">通过</button></a>
+                     {% if department_work.work_is_activate == 0 %}
+                            <a href="/superuser/check/?id={{department_work.id}}"><button  type="button"   name="id">通过</button></a>
+                            <a href="/superuser/refuse/?id={{department_work.id}}"><button  type="button"  name="id">退回</button></a>
                      {% endif %}
 
-                     {% if department_work.work_is_activate == True %}
+                     {% if department_work.work_is_activate == 1 %}
                          已通过
+                     {% endif %}
+                
+                     {% if department_work.work_is_activate == -1 %}
+                         已拒绝
                      {% endif %}
                 </td>
             </tr>
