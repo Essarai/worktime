@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'test',
         'USER':'root',
         'PASSWORD':'password',
-        #'HOST':'127.0.0.1',
-        'HOST':'111.231.101.168',
+        'HOST':'127.0.0.1',
+        #'HOST':'111.231.101.168',
         'PORT':3306
     }
 }

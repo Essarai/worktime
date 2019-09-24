@@ -12,5 +12,6 @@ urlpatterns = [
     path('superuser',views.superuser, name='superuser'),
     path('submit/<student_id>', views.submit, name='submit'),
     path('worktime/export_excel',views.export_excel, name='export_excel'),
+    path('superuser/check/',views.check, name='check'),
     path('', views.login, name='login'),
 ]

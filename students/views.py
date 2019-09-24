@@ -9,7 +9,7 @@ from io import BytesIO
 from django.contrib.auth.hashers import make_password, check_password
 from itsdangerous import TimedJSONWebSignatureSerializer as Ts
 from django.conf import settings
-
+#git push origin master
 
 #/worktime/regist/
 def regist(request):
@@ -122,13 +122,20 @@ def submit(request, student_id):
         work_details = request.POST.get('work_details')
         if not all([which_week, work_times, work_details]):
             return render(request, 'submit.html', {'errmsg': '数据不完整，请重新输入'})
+        try:
+            wk = Work.objects.get(work_id=student_id, which_week=which_week).work_is_activate
+        except:
+            wk = False
+        if wk == True:
+            return render(request, 'submit.html', {'errmsg': '该周工作量已审核通过且无法修改'})
         else:
             try:
-                Work.objects.create(work_id=student_id, which_week=which_week, work_times=work_times,
-                                               work_details=work_details)
-                return redirect(reverse('worktime:logout', args=(student_id,)))
+                Work.objects.get(work_id=student_id, which_week=which_week)
+                return render(request, 'submit.html', {'errmsg': '该周工作量已提交且正在审核'})
             except:
-                return render(request,'submit.html',{'errmsg':'该周工作量已提交'})
+                Work.objects.update_or_create(work_id=student_id, which_week=which_week, work_times=work_times,
+                                              work_details=work_details, work_is_activate=False)
+                return redirect(reverse('worktime:logout', args=(student_id,)))
 
 
 #/worktime/logout/
@@ -233,3 +240,12 @@ def export_excel(request):
     output.seek(0)
     response.write(output.getvalue())
     return response
+
+
+#superuser/check/
+def check(request):
+    pk = request.GET.get('id')
+    wk = Work.objects.get(pk= pk)
+    wk.work_is_activate = True
+    wk.save()
+    return redirect('/superuser')

@@ -22,13 +22,14 @@
                        </select>
              <br>
             <input type="submit" value="查询">
-              <a href="{% url 'worktime:export_excel' %}"><button  type="button">导出全部</button></a>
+              <a href="{% url 'worktime:export_excel' %}"><button  type="button">导出全部</button ></a>
        </form>
     <table style="float: left" id = "table-7">
             <thead>
                  <th>第几周</th>
                  <th>工作时长</th>
                  <th>工作详情</th>
+                 <th>操作</th>
             </thead>
 
             <tbody>
@@ -36,7 +37,16 @@
             <tr>
                 <td>{{ department_work.which_week }}</td>
                 <td>{{ department_work.work_times}}</td>
-                <td>{{department_work.work_details}}</td>
+                <td>{{ department_work.work_details}}</td>
+                <td>
+                     {% if department_work.work_is_activate == False %}
+                            <a href="/superuser/check/?id={{department_work.id}}"><button  type="button" value="id"  name="id">通过</button></a>
+                     {% endif %}
+
+                     {% if department_work.work_is_activate == True %}
+                         已通过
+                     {% endif %}
+                </td>
             </tr>
             {% endfor %}
             </tbody>
